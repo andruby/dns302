@@ -4,15 +4,21 @@ defmodule Dns302 do
   """
 
   @doc """
-  Hello world.
+  Get the redirect url for this domain
 
   ## Examples
 
-      iex> Dns302.hello()
-      :world
+      iex> Dns302.get_url("bedesign.be")
+      ~c"https://www.linkedin.com/in/andrewfecheyrlippens/"
+
+      iex> Dns302.get_url("telenet.be")
+      nil
 
   """
-  def hello do
-    :world
+  def get_url(domain) do
+    case DNS.resolve("dns302.#{domain}", :txt) do
+      {:ok, [[url]]} -> url
+      _ -> nil
+    end
   end
 end

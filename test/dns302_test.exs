@@ -3,6 +3,6 @@ defmodule Dns302Test do
   doctest Dns302
 
   test "greets the world" do
-    assert Dns302.hello() == :world
+    assert Dns302.get_url("bedesign.be") == ~c"https://www.linkedin.com/in/andrewfecheyrlippens/"
   end
 end
