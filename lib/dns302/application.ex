@@ -8,12 +8,9 @@ defmodule Dns302.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: Dns302.Worker.start_link(arg)
-      # {Dns302.Worker, arg}
+      {Bandit, plug: Dns302.Server}
     ]
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Dns302.Supervisor]
     Supervisor.start_link(children, opts)
   end

@@ -22,6 +22,7 @@ defmodule Dns302.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:bandit, "~> 1.0"},
       {:dns, "~> 2.0"},
     ]
   end
