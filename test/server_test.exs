@@ -9,12 +9,23 @@ defmodule Dns302.ServerTest do
   test "Shows the info page" do
     conn =
       :get
+      |> conn("http://dns302.dev/", "")
+      |> Server.call(@opts)
+
+    assert conn.state == :sent
+    assert conn.status == 200
+    assert conn.resp_body =~ "info"
+  end
+
+  test "Shows the debug page" do
+    conn =
+      :get
       |> conn("http://hasnodns.com/", "")
       |> Server.call(@opts)
 
     assert conn.state == :sent
     assert conn.status == 200
-    assert conn.resp_body == "todo"
+    assert conn.resp_body =~ "debug"
   end
 
   test "Does the redirect" do
@@ -29,17 +40,5 @@ defmodule Dns302.ServerTest do
     assert get_resp_header(conn, "location") == [
              "https://www.linkedin.com/in/andrewfecheyrlippens/"
            ]
-  end
-
-  test "user is redirected when current_user is not assigned" do
-    # build a connection and run the plug
-
-    # assert redirected_to(conn) == "/sign_in"
-  end
-
-  test "user passes through when current_user is assigned" do
-    # build a connection, assign current_user, and run the plug
-
-    # assert conn.status != 302
   end
 end
