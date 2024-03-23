@@ -7,8 +7,11 @@ defmodule Dns302.Application do
 
   @impl true
   def start(_type, _args) do
+    host = Application.fetch_env!(:dns302, :host)
+    port = Application.fetch_env!(:dns302, :port)
+
     children = [
-      {Bandit, plug: {Dns302.Server, host: Application.fetch_env!(:dns302, :host)}}
+      {Bandit, plug: {Dns302.Server, host: host}, port: port}
     ]
 
     opts = [strategy: :one_for_one, name: Dns302.Supervisor]
