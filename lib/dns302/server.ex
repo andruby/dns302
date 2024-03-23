@@ -7,7 +7,7 @@ defmodule Dns302.Server do
     options
   end
 
-  def call(%{host: "dns302.dev"} = conn, _opts) do
+  def call(%{host: host} = conn, [host: host]) do
     render_template(conn, "info.html.eex")
   end
 
@@ -25,7 +25,7 @@ defmodule Dns302.Server do
   end
 
   defp show_debug_page(conn) do
-    render_template(conn, "debug.html.eex")
+    render_template(conn, "debug.html.eex", host: conn.host)
   end
 
   defp render_template(%{status: status} = conn, template, assigns \\ []) do

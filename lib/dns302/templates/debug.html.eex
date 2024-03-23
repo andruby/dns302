@@ -1,1 +1,60 @@
-<p> The debug page </p>
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+  <div class="bg-white py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl">
+        <p class="mt-2 text-4xl font-bold tracking-tight text-gray-900">Redirect from dns to http</p>
+        <p class="mt-2 text-lg leading-8 text-gray-600">Out of the box, DNS servers can't redirect a domain to a url
+          with a path.<br>You can use <span class="text-indigo-600">dns302.dev</span> to do that without setting up and
+          running a webserver.</p>
+        <p class="mt-6 text-3xl font-bold tracking-tight text-gray-900">How?</p>
+        <p class="mt-2 text-gray-600">Edit your DNS zone
+        <ol class="mt-1 text-gray-600 list-decimal">
+          <li>Set a CNAME for your domain to dns302.dev</li>
+          <li>Add a TXT record for dns302.yourdomain to the URL you want to redirect to</li>
+        </ol>
+        </p>
+      </div>
+      <div class="mx-auto mt-8 max-w-2xl">
+
+        <table class="min-w-full divide-y divide-gray-300">
+          <thead>
+            <tr>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Hostname
+              </th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Type</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Value</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr>
+              <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"><%= host %></td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">CNAME</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">dns302.dev</td>
+            </tr>
+            <tr>
+              <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">dns302.<%= host %>
+              </td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">TXT</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                http://the.domain.com/with-path/to/redirect-to</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

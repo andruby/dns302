@@ -4,17 +4,17 @@ defmodule Dns302.ServerTest do
 
   alias Dns302.Server
 
-  @opts Server.init([])
+  @opts Server.init([host: "testhost"])
 
   test "Shows the info page" do
     conn =
       :get
-      |> conn("http://dns302.dev/", "")
+      |> conn("http://testhost/", "")
       |> Server.call(@opts)
 
     assert conn.state == :sent
     assert conn.status == 200
-    assert conn.resp_body =~ "info"
+    assert conn.resp_body =~ "example.com"
   end
 
   test "Shows the debug page" do
@@ -25,7 +25,7 @@ defmodule Dns302.ServerTest do
 
     assert conn.state == :sent
     assert conn.status == 200
-    assert conn.resp_body =~ "debug"
+    assert conn.resp_body =~ "dns302.hasnodns"
   end
 
   test "Does the redirect" do
