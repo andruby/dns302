@@ -19,7 +19,7 @@
         <p class="mt-6 text-3xl font-bold tracking-tight text-gray-900">How?</p>
         <p class="mt-2 text-gray-600">Edit your DNS zone
         <ol class="mt-1 text-gray-600 list-decimal">
-          <li>Set a CNAME for your domain to dns302.dev</li>
+          <li>Set a A for your domain to 206.51.242.221</li>
           <li>Add a TXT record for dns302.yourdomain to the URL you want to redirect to</li>
         </ol>
         </p>
@@ -38,8 +38,8 @@
           <tbody class="divide-y divide-gray-200">
             <tr>
               <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">example.com</td>
-              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">CNAME</td>
-              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">dns302.dev</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">A</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">206.51.242.221</td>
             </tr>
             <tr>
               <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">dns302.example.com
